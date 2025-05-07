@@ -32,7 +32,7 @@ namespace UserRegister.Services
                 Console.WriteLine("Idade inválida.");
                 return;
             }
-            var userToAdd = new User { Name = name, Email = email, Age = idade };
+            var userToAdd = new User { Name = name!, Email = email!, Age = idade };
             _context.Users.Add(userToAdd);
             _context.SaveChanges();
 
