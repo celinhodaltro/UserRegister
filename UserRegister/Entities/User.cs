@@ -17,7 +17,7 @@ namespace UserRegister.Entities
 
         public override string ToString()
         {
-            return $"Nome: {Name}, Email: {Email}, Idade: {Age}";
+            return $"Id: {Id} Nome: {Name}, Email: {Email}, Idade: {Age}";
         }
     }
 }
