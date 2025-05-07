@@ -58,8 +58,37 @@ namespace UserRegister.Services
 
             Console.WriteLine("\n Essa lista sera excluida em 5 segundos...");
 
+        public void FindUsers()
+        {
+            Console.Write("Digite o nome para buscar: ");
+            var name = Console.ReadLine();
+
+            if (String.IsNullOrEmpty(name))
+            {
+                Console.WriteLine("O nome digitado está vazio, digite um texto valido.");
+                Task.Delay(2000).Wait();
+                return;
+            }
+
+            var resultados = _context.Users
+                .Where(u => u.Name.Contains(name!, StringComparison.OrdinalIgnoreCase))
+                .ToList();
+
+            if (!resultados.Any())
+            {
+                Console.WriteLine("Usuário não encontrado.");
+                Task.Delay(2000).Wait();
+                return;
+            }
+
+            Console.WriteLine("=== Resultado da busca ===");
+            foreach (var u in resultados)
+                Console.WriteLine($"ID: {u.Id}, Nome: {u.Name}, Email: {u.Email}, Idade: {u.Age}");
+
+            Console.WriteLine("\n Essa lista sera excluida em 5 segundos...");
             Task.Delay(5000).Wait();
         }
+    }
 
     }
-}
+
