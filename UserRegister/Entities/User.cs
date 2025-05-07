@@ -10,7 +10,7 @@ namespace UserRegister.Entities
     public class User
     {
         [Key]
-        public int {get; set;}
+        public int Id {get; set;}
         public string Name { get; set; }
         public string Email { get; set; }
         public int Age { get; set; }
