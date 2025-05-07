@@ -30,6 +30,7 @@ internal class Program
             switch (option)
             {
                 case 1:
+                    userService.RegisterUser();
                     break;
                 case 2:
                     break;
