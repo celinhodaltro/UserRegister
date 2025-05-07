@@ -37,7 +37,6 @@ internal class Program
                     break;
                 case 3:
                     userService.FindUsers();
-
                     break;
                 case 0:
                     isRunning = false;
