@@ -57,6 +57,8 @@ namespace UserRegister.Services
                 Console.WriteLine($"ID: {u.Id}, Nome: {u.Name}, Email: {u.Email}, Idade: {u.Age}");
 
             Console.WriteLine("\n Essa lista sera excluida em 5 segundos...");
+            Task.Delay(5000).Wait();
+        }
 
         public void FindUsers()
         {
