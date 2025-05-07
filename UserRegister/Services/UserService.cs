@@ -40,5 +40,20 @@ namespace UserRegister.Services
             Task.Delay(2000).Wait();
         }
 
+        public void ListUsers()
+        {
+            var usuarios = _context.Users.ToList();
+
+            if (!usuarios.Any())
+            {
+                Console.WriteLine("Nenhum usuário encontrado.");
+                return;
+            }
+
+            Console.WriteLine("=== Lista de Usuários ===");
+            foreach (var u in usuarios)
+                Console.WriteLine($"ID: {u.Id}, Nome: {u.Name}, Email: {u.Email}, Idade: {u.Age}");
+        }
+
     }
 }
