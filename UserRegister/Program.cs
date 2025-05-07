@@ -67,6 +67,7 @@ internal class Program
         else
         {
             Console.WriteLine("Opção inválida. Tente novamente.");
+            Task.Delay(2000).Wait();
             return HandleOptions();
         }
     }
