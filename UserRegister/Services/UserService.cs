@@ -35,13 +35,13 @@ namespace UserRegister.Services
             }
 
             Console.Write("Idade: ");
-            if (!int.TryParse(Console.ReadLine(), out int idade))
+            if (!int.TryParse(Console.ReadLine(), out int age))
             {
                 Console.WriteLine("Idade inválida.");
                 Task.Delay(2000).Wait();
                 return;
             }
-            var userToAdd = new User { Name = name!, Email = email!, Age = idade };
+            var userToAdd = new User { Name = name!, Email = email!, Age = age };
             _context.Users.Add(userToAdd);
             _context.SaveChanges();
 
