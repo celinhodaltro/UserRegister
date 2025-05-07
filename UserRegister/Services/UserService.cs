@@ -32,11 +32,12 @@ namespace UserRegister.Services
                 Console.WriteLine("Idade inválida.");
                 return;
             }
-
-            _context.Users.Add(new User { Name = nome, Email = email, Age = idade });
+            var userToAdd = new User { Name = nome, Email = email, Age = idade };
+            _context.Users.Add(userToAdd);
             _context.SaveChanges();
 
-            Console.WriteLine("Usuário cadastrado com sucesso!");
+            Console.WriteLine($"Usuário cadastrado com sucesso: \n {userToAdd}");
+            Task.Delay(2000).Wait();
         }
 
     }
