@@ -33,6 +33,7 @@ internal class Program
                     userService.RegisterUser();
                     break;
                 case 2:
+                    userService.ListUsers();
                     break;
                 case 3:
 

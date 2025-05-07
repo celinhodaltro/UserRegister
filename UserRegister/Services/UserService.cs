@@ -30,6 +30,7 @@ namespace UserRegister.Services
             if (!int.TryParse(Console.ReadLine(), out int idade))
             {
                 Console.WriteLine("Idade inválida.");
+                Task.Delay(2000).Wait();
                 return;
             }
             var userToAdd = new User { Name = name!, Email = email!, Age = idade };
@@ -47,12 +48,17 @@ namespace UserRegister.Services
             if (!users.Any())
             {
                 Console.WriteLine("Nenhum usuário encontrado.");
+                Task.Delay(2000).Wait();
                 return;
             }
 
             Console.WriteLine("=== Lista de Usuários ===");
             foreach (var u in users)
                 Console.WriteLine($"ID: {u.Id}, Nome: {u.Name}, Email: {u.Email}, Idade: {u.Age}");
+
+            Console.WriteLine("\n Essa lista sera excluida em 5 segundos...");
+
+            Task.Delay(5000).Wait();
         }
 
     }
