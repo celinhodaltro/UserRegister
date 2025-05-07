@@ -21,7 +21,7 @@ namespace UserRegister.Services
         public void RegisterUser()
         {
             Console.Write("Nome: ");
-            var nome = Console.ReadLine();
+            var name = Console.ReadLine();
 
             Console.Write("Email: ");
             var email = Console.ReadLine();
@@ -32,7 +32,7 @@ namespace UserRegister.Services
                 Console.WriteLine("Idade inválida.");
                 return;
             }
-            var userToAdd = new User { Name = nome, Email = email, Age = idade };
+            var userToAdd = new User { Name = name, Email = email, Age = idade };
             _context.Users.Add(userToAdd);
             _context.SaveChanges();
 
@@ -42,16 +42,16 @@ namespace UserRegister.Services
 
         public void ListUsers()
         {
-            var usuarios = _context.Users.ToList();
+            var users = _context.Users.ToList();
 
-            if (!usuarios.Any())
+            if (!users.Any())
             {
                 Console.WriteLine("Nenhum usuário encontrado.");
                 return;
             }
 
             Console.WriteLine("=== Lista de Usuários ===");
-            foreach (var u in usuarios)
+            foreach (var u in users)
                 Console.WriteLine($"ID: {u.Id}, Nome: {u.Name}, Email: {u.Email}, Idade: {u.Age}");
         }
 
