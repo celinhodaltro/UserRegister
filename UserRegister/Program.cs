@@ -1,17 +1,28 @@
 ﻿
 
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using UserRegister.Data;
 using UserRegister.Entities;
+using UserRegister.Services;
 
 internal class Program
 {
-    static List<User> users = new List<User>();
-    private static void Main(string[] args)
+    private ServiceProvider serviceProvider { get; set; }
+    public static void Main(string[] args) => new Program().ConsoleApp(args);
+    private void ConsoleApp(string[] args)
     {
+        serviceProvider = new ServiceCollection().AddDbContext<AppDbContext>(options =>
+                                                        options.UseInMemoryDatabase("UsuariosDb"))
+                                                     .AddScoped<UserService>()
+                                                     .BuildServiceProvider();
+
         ExecuteProgram();
     }
 
-    private static bool ExecuteProgram()
+    private bool ExecuteProgram()
     {
+        var userService = serviceProvider.GetRequiredService<UserService>();
         bool isRunning = true;
         while (isRunning)
         {
@@ -37,7 +48,7 @@ internal class Program
         return true;
     }
 
-    private static int HandleOptions()
+    private int HandleOptions()
     {
         Console.Clear();
         Console.WriteLine("\n=== MENU ===");
@@ -59,4 +70,6 @@ internal class Program
             return HandleOptions();
         }
     }
+
+
 }
