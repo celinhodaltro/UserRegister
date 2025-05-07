@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UserRegister.Data;
 using UserRegister.Entities;
+using UserRegister.Extension;
 
 namespace UserRegister.Services
 {
@@ -25,6 +26,13 @@ namespace UserRegister.Services
 
             Console.Write("Email: ");
             var email = Console.ReadLine();
+
+            if(String.IsNullOrEmpty(email) || !email.isEmail())
+            {
+                Console.WriteLine("Email inválido.");
+                Task.Delay(2000).Wait();
+                return;
+            }
 
             Console.Write("Idade: ");
             if (!int.TryParse(Console.ReadLine(), out int idade))
